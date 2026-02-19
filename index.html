@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jim's Famous Fruit & Veggies | D Farms</title>
+    <meta name="description" content="Fresh, local fruit and vegetables — weekly, bi-weekly, or monthly subscription. Pickup or delivery. Jim's Famous Fruit & Veggies by D Farms!">
+    <meta property="og:title" content="Jim's Famous Fruit & Veggies by D Farms">
+    <meta property="og:description" content="Farm fresh produce delivered to your door or picked up locally. Subscribe today!">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --red:        #CC0001;
+            --blue:       #002868;
+            --white:      #FFFFFF;
+            --gold:       #FFD700;
+            --light-red:  #FFF5F5;
+            --light-blue: #EEF3FF;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--white);
+            color: #222;
+        }
+
+        /* ── HEADER ── */
+        header {
+            background: linear-gradient(160deg, var(--blue) 0%, #003a8c 100%);
+            padding: 28px 20px 22px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before, header::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0;
+            height: 7px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--red)   0%,  var(--red)   33%,
+                var(--white) 33%, var(--white)  66%,
+                var(--red)   66%, var(--red)   100%
+            );
+        }
+        header::before { top: 0; }
+        header::after  { bottom: 0; }
+
+        .logo-emoji {
+            font-size: 4.5rem;
+            display: block;
+            margin-bottom: 8px;
+            animation: floatUp 3s ease-in-out infinite;
+        }
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-12px); }
+        }
+
+        header h1 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--gold);
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+            line-height: 1.15;
+        }
+        header h2 {
+            color: rgba(255,255,255,0.92);
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+        .stars { color: var(--gold); font-size: 1.4rem; letter-spacing: 6px; margin: 10px 0; }
+
+        /* ── NAV ── */
+        nav {
+            background: var(--red);
+            padding: 13px 10px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+        }
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: clamp(0.8rem, 2.5vw, 1rem);
+            margin: 0 10px;
+            transition: opacity 0.2s;
+        }
+        nav a:hover { opacity: 0.75; }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(180deg, var(--light-blue) 0%, var(--white) 100%);
+            padding: 65px 20px 55px;
+            text-align: center;
+        }
+        .hero-emojis {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            margin-bottom: 22px;
+        }
+        .hero-emojis span { display: inline-block; animation: wiggle 4s infinite; }
+        .hero-emojis span:nth-child(2) { animation-delay: .3s; }
+        .hero-emojis span:nth-child(3) { animation-delay: .6s; }
+        .hero-emojis span:nth-child(4) { animation-delay: .9s; }
+        .hero-emojis span:nth-child(5) { animation-delay: 1.2s; }
+        .hero-emojis span:nth-child(6) { animation-delay: 1.5s; }
+        @keyframes wiggle {
+            0%,85%,100% { transform: rotate(0deg) scale(1); }
+            88%          { transform: rotate(-12deg) scale(1.15); }
+            93%          { transform: rotate(12deg) scale(1.15); }
+        }
+
+        .hero h2 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--blue);
+            font-size: clamp(1.5rem, 5vw, 2.4rem);
+            margin-bottom: 16px;
+        }
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.15rem);
+            color: #444;
+            max-width: 640px;
+            margin: 0 auto 32px;
+            line-height: 1.75;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            padding: 15px 36px;
+            border-radius: 50px;
+            font-family: 'Nunito', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.15rem);
+            font-weight: 800;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 18px rgba(204,0,1,0.4);
+            transition: transform .2s, box-shadow .2s;
+        }
+        .btn:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(204,0,1,0.5); }
+        .btn-blue  { background: var(--blue); box-shadow: 0 5px 18px rgba(0,40,104,0.4); }
+        .btn-blue:hover { box-shadow: 0 10px 24px rgba(0,40,104,0.5); }
+
+        /* ── SECTIONS ── */
+        section { padding: 60px 20px; }
+        .section-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .red-title  { color: var(--red); }
+        .blue-title { color: var(--blue); }
+
+        /* ── PRODUCE GRID ── */
+        .offer { background: var(--light-red); }
+        .offer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .offer-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 26px 14px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            border-top: 5px solid var(--red);
+            transition: transform .2s;
+        }
+        .offer-card:nth-child(even) { border-top-color: var(--blue); }
+        .offer-card:hover { transform: translateY(-6px); }
+        .offer-card .emoji { font-size: 2.8rem; display: block; margin-bottom: 10px; }
+        .offer-card h3 { font-weight: 800; color: var(--blue); font-size: 1rem; }
+
+        /* ── PLANS ── */
+        .plans {
+            background: linear-gradient(135deg, var(--blue) 0%, #003a9a 100%);
+            color: var(--white);
+        }
+        .plans .section-title { color: var(--gold); }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+            max-width: 920px;
+            margin: 0 auto 45px;
+        }
+        .plan-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 22px;
+            padding: 32px 22px;
+            text-align: center;
+            transition: transform .2s, background .2s;
+            position: relative;
+        }
+        .plan-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.18); }
+        .plan-card.popular { border-color: var(--gold); background: rgba(255,215,0,0.12); }
+        .popular-badge {
+            position: absolute;
+            top: -15px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--blue);
+            font-weight: 800;
+            font-size: 0.78rem;
+            padding: 4px 18px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .plan-card .plan-emoji { font-size: 2.6rem; display: block; margin-bottom: 10px; }
+        .plan-card h3 { font-family: 'Fredoka One', cursive; font-size: 1.7rem; margin-bottom: 6px; }
+        .plan-card .frequency { font-size: 0.9rem; opacity: 0.8; margin-bottom: 18px; }
+        .plan-card ul { list-style: none; text-align: left; margin-bottom: 20px; font-size: 0.95rem; }
+        .plan-card ul li { padding: 5px 0; }
+        .plan-card ul li::before { content: '✅ '; }
+
+        /* ── FORM ── */
+        .subscribe-form {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 38px 32px;
+            max-width: 620px;
+            margin: 0 auto;
+            box-shadow: 0 10px 36px rgba(0,0,0,0.18);
+        }
+        .subscribe-form h3 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--blue);
+            font-size: 1.7rem;
+            margin-bottom: 22px;
+            text-align: center;
+        }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-weight: 700; color: #333; margin-bottom: 6px; font-size: 0.95rem; }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1rem;
+            transition: border-color .2s;
+            outline: none;
+            color: #222;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--blue); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+        .success-msg {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            font-weight: 700;
+            margin-top: 16px;
+            font-size: 1.05rem;
+        }
+
+        /* ── HOW IT WORKS ── */
+        .how { background: var(--light-blue); }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .step {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            border-bottom: 5px solid var(--blue);
+        }
+        .step .step-num {
+            display: inline-block;
+            background: var(--red);
+            color: var(--white);
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.4rem;
+            width: 48px; height: 48px;
+            border-radius: 50%;
+            line-height: 48px;
+            margin-bottom: 14px;
+        }
+        .step h3 { font-weight: 800; color: var(--blue); margin-bottom: 8px; }
+        .step p  { color: #555; font-size: 0.95rem; line-height: 1.6; }
+
+        /* ── QR CODE ── */
+        .qr-section { background: var(--white); text-align: center; }
+        .qr-section p { color: #555; max-width: 520px; margin: 0 auto 10px; font-size: 1.05rem; line-height: 1.65; }
+        #qrcode {
+            display: inline-block;
+            padding: 18px;
+            background: var(--white);
+            border-radius: 20px;
+            border: 5px solid var(--red);
+            box-shadow: 0 6px 22px rgba(0,0,0,0.12);
+            margin: 20px auto;
+        }
+        .qr-caption { color: #666; font-size: 1rem; margin-bottom: 20px; }
+
+        /* ── SOCIAL ── */
+        .social-section { background: var(--red); text-align: center; padding: 55px 20px; }
+        .social-section h2 { font-family: 'Fredoka One', cursive; color: var(--white); font-size: clamp(1.6rem, 5vw, 2.2rem); margin-bottom: 10px; }
+        .social-section p { color: rgba(255,255,255,0.9); margin-bottom: 28px; font-size: 1.05rem; }
+        .social-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            color: var(--red);
+            text-decoration: none;
+            font-weight: 800;
+            padding: 13px 26px;
+            border-radius: 50px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            transition: transform .2s;
+        }
+        .social-link:hover { transform: scale(1.07); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--blue);
+            color: var(--white);
+            text-align: center;
+            padding: 35px 20px;
+        }
+        .footer-logo { font-family: 'Fredoka One', cursive; font-size: 1.4rem; color: var(--gold); margin-bottom: 12px; }
+        footer p { opacity: 0.82; font-size: 0.9rem; line-height: 2; }
+
+        /* ── RIBBON ── */
+        .patriot-ribbon {
+            height: 8px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--red)   0px,  var(--red)   33%,
+                var(--white) 33%,  var(--white)  66%,
+                var(--blue)  66%,  var(--blue)  100%
+            );
+        }
+    </style>
+</head>
+<body>
+
+<!-- PATRIOT RIBBON -->
+<div class="patriot-ribbon"></div>
+
+<!-- HEADER -->
+<header>
+    <span class="logo-emoji">🌽</span>
+    <h1>Jim's Famous<br>Fruit &amp; Veggies</h1>
+    <div class="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
+    <h2>by D Farms &nbsp;🚜&nbsp; Fresh · Local · Delicious</h2>
+</header>
+
+<!-- NAV -->
+<nav>
+    <a href="#about">🏠 Home</a>
+    <a href="#produce">🥕 Produce</a>
+    <a href="#how">📋 How It Works</a>
+    <a href="#subscribe">🛒 Subscribe</a>
+    <a href="#qr">📱 QR Code</a>
+    <a href="#contact">📲 Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+    <div class="hero-emojis">
+        <span>🍎</span><span>🥕</span><span>🌽</span>
+        <span>🍅</span><span>🥦</span><span>🍓</span>
+    </div>
+    <h2>Farm Fresh, Right to You! 🇺🇸</h2>
+    <p>
+        Welcome to <strong>Jim's Famous Fruit &amp; Veggies</strong> — where the freshest,
+        most delicious produce from <strong>D Farms</strong> lands straight in your hands!
+        Handpicked with love, grown with pride, delivered with a smile. 🌱
+        Supporting local farming and your family's health — one box at a time!
+    </p>
+    <a href="#subscribe" class="btn">🛒 Subscribe Now — It's Easy!</a>
+</section>
+
+<!-- PRODUCE -->
+<section class="offer" id="produce">
+    <h2 class="section-title red-title">🌟 What's In Your Box? 🌟</h2>
+    <div class="offer-grid">
+        <div class="offer-card"><span class="emoji">🍎</span><h3>Fresh Fruits</h3></div>
+        <div class="offer-card"><span class="emoji">🥕</span><h3>Garden Veggies</h3></div>
+        <div class="offer-card"><span class="emoji">🌽</span><h3>Sweet Corn</h3></div>
+        <div class="offer-card"><span class="emoji">🍅</span><h3>Vine Tomatoes</h3></div>
+        <div class="offer-card"><span class="emoji">🥬</span><h3>Leafy Greens</h3></div>
+        <div class="offer-card"><span class="emoji">🍓</span><h3>Fresh Berries</h3></div>
+        <div class="offer-card"><span class="emoji">🧅</span><h3>Onions &amp; Root Veg</h3></div>
+        <div class="offer-card"><span class="emoji">🎁</span><h3>Seasonal Surprise</h3></div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+    <h2 class="section-title blue-title">📋 How It Works</h2>
+    <div class="steps">
+        <div class="step">
+            <div class="step-num">1</div>
+            <h3>Pick Your Plan</h3>
+            <p>Choose weekly, bi-weekly, or monthly — whatever fits your family best!</p>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <h3>Pickup or Delivery?</h3>
+            <p>Swing by and grab your box for free, or have it delivered for a small fee!</p>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <h3>Fill Out the Form</h3>
+            <p>Give us your info below and we'll get you set up right away!</p>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <h3>Enjoy Fresh Produce!</h3>
+            <p>Sit back and enjoy the freshest fruits &amp; veggies from D Farms! 🎉</p>
+        </div>
+    </div>
+</section>
+
+<!-- SUBSCRIPTION PLANS -->
+<section class="plans" id="subscribe">
+    <h2 class="section-title">🥳 Choose Your Plan! 🥳</h2>
+
+    <div class="plans-grid">
+        <!-- Weekly -->
+        <div class="plan-card">
+            <span class="plan-emoji">📅</span>
+            <h3>Weekly</h3>
+            <div class="frequency">Fresh box every single week!</div>
+            <ul>
+                <li>Never run out of fresh produce</li>
+                <li>Pickup (free) or delivery</li>
+                <li>Seasonal variety every box</li>
+                <li>Cancel anytime, no hassle</li>
+            </ul>
+        </div>
+
+        <!-- Bi-Weekly (Popular) -->
+        <div class="plan-card popular">
+            <div class="popular-badge">⭐ Most Popular!</div>
+            <span class="plan-emoji">🗓️</span>
+            <h3>Bi-Weekly</h3>
+            <div class="frequency">A fresh box every 2 weeks!</div>
+            <ul>
+                <li>Perfect balance for most families</li>
+                <li>Pickup (free) or delivery</li>
+                <li>Seasonal variety every box</li>
+                <li>Cancel anytime, no hassle</li>
+            </ul>
+        </div>
+
+        <!-- Monthly -->
+        <div class="plan-card">
+            <span class="plan-emoji">📆</span>
+            <h3>Monthly</h3>
+            <div class="frequency">One big fresh box per month!</div>
+            <ul>
+                <li>Great value, great produce</li>
+                <li>Pickup (free) or delivery</li>
+                <li>Seasonal variety every box</li>
+                <li>Cancel anytime, no hassle</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SIGNUP FORM -->
+    <div class="subscribe-form">
+        <h3>📋 Sign Me Up!</h3>
+        <!-- 👇 Replace YOUR_FORM_ID with your Formspree form ID (free at formspree.io) -->
+        <form id="subscribeForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First Name *</label>
+                    <input type="text" name="first_name" placeholder="Jane" required>
+                </div>
+                <div class="form-group">
+                    <label>Last Name *</label>
+                    <input type="text" name="last_name" placeholder="Smith" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" name="email" placeholder="you@email.com" required>
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" name="phone" placeholder="(555) 123-4567">
+            </div>
+            <div class="form-group">
+                <label>Subscription Plan *</label>
+                <select name="plan" required>
+                    <option value="">-- Choose Your Plan --</option>
+                    <option value="weekly">📅 Weekly</option>
+                    <option value="biweekly">🗓️ Bi-Weekly (Most Popular!)</option>
+                    <option value="monthly">📆 Monthly</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Pickup or Delivery? *</label>
+                <select name="delivery_type" id="deliverySelect" required>
+                    <option value="">-- Choose One --</option>
+                    <option value="pickup">🚗 I'll Pick It Up (Free!)</option>
+                    <option value="delivery">🚚 Deliver to Me (Small fee applies)</option>
+                </select>
+            </div>
+            <div class="form-group" id="addressGroup" style="display:none;">
+                <label>Delivery Address *</label>
+                <input type="text" id="addressInput" name="address" placeholder="123 Main St, City, State ZIP">
+            </div>
+            <div class="form-group">
+                <label>Notes / Preferences / Allergies</label>
+                <textarea name="notes" rows="3" placeholder="Anything we should know? Allergies, preferences, etc."></textarea>
+            </div>
+            <button type="submit" class="btn" style="width:100%; font-size:1.1rem;">
+                🎉 Subscribe Now!
+            </button>
+        </form>
+        <div class="success-msg" id="successMsg">
+            🎉 You're subscribed! We'll be in touch very soon! 🥕🍎🌽
+        </div>
+    </div>
+</section>
+
+<!-- QR CODE -->
+<section class="qr-section" id="qr">
+    <h2 class="section-title blue-title">📱 Scan &amp; Share!</h2>
+    <p>
+        Share this QR code with friends and family so they can find us instantly!
+        Print it on flyers, bags, business cards — anywhere you like! 🇺🇸
+    </p>
+    <div id="qrcode"></div>
+    <p class="qr-caption">👆 Scan with your phone camera to open this page!</p>
+    <button onclick="downloadQR()" class="btn btn-blue">⬇️ Download QR Code</button>
+</section>
+
+<!-- SOCIAL / CONTACT -->
+<section class="social-section" id="contact">
+    <h2>📲 Follow Us &amp; Share the Love!</h2>
+    <p>Find us on social media for deals, farm updates &amp; fun content. Tag us in your fresh box photos! 🌱</p>
+    <div class="social-links">
+        <!-- 👇 Replace # with your actual social media profile URLs -->
+        <a href="#" class="social-link">📘 Facebook</a>
+        <a href="#" class="social-link">🎵 TikTok</a>
+        <a href="#" class="social-link">📸 Instagram</a>
+        <!-- 👇 Replace with your phone number -->
+        <a href="tel:+15555555555" class="social-link">📞 Call Us</a>
+        <!-- 👇 Replace with your email -->
+        <a href="mailto:jims@dfarms.com" class="social-link">✉️ Email Us</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">🌽 Jim's Famous Fruit &amp; Veggies by D Farms 🌽</div>
+    <p>
+        🇺🇸 Proudly American &nbsp;|&nbsp; 🌱 Locally Grown &nbsp;|&nbsp; ❤️ Family Owned<br>
+        &copy; 2025 Jim's Famous Fruit &amp; Veggies by D Farms. All rights reserved.<br>
+        <small>Made with love and a whole lot of veggies 🥦</small>
+    </p>
+</footer>
+
+<!-- PATRIOT RIBBON -->
+<div class="patriot-ribbon"></div>
+
+<script>
+    // ── QR CODE ──
+    // Points to the current page URL (updates automatically when hosted)
+    var qr = new QRCode(document.getElementById("qrcode"), {
+        text: window.location.href,
+        width: 210,
+        height: 210,
+        colorDark:  "#002868",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+
+    function downloadQR() {
+        var canvas = document.querySelector("#qrcode canvas");
+        if (canvas) {
+            var link = document.createElement('a');
+            link.download = 'JimsFruitVeggies-QR.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        } else {
+            var img = document.querySelector("#qrcode img");
+            if (img) {
+                var link = document.createElement('a');
+                link.download = 'JimsFruitVeggies-QR.png';
+                link.href = img.src;
+                link.click();
+            }
+        }
+    }
+
+    // ── SHOW / HIDE DELIVERY ADDRESS ──
+    document.getElementById('deliverySelect').addEventListener('change', function() {
+        var group = document.getElementById('addressGroup');
+        var input = document.getElementById('addressInput');
+        if (this.value === 'delivery') {
+            group.style.display = 'block';
+            input.required = true;
+        } else {
+            group.style.display = 'none';
+            input.required = false;
+        }
+    });
+
+    // ── FORM SUBMISSION (Formspree) ──
+    document.getElementById('subscribeForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Demo mode if Formspree ID not yet set
+        if (this.action.includes('YOUR_FORM_ID')) {
+            document.getElementById('successMsg').style.display = 'block';
+            this.reset();
+            document.getElementById('addressGroup').style.display = 'none';
+            return;
+        }
+
+        var btn = this.querySelector('button[type="submit"]');
+        btn.textContent = '⏳ Sending...';
+        btn.disabled = true;
+
+        try {
+            var res = await fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: { Accept: 'application/json' }
+            });
+            if (res.ok) {
+                document.getElementById('successMsg').style.display = 'block';
+                this.reset();
+                document.getElementById('addressGroup').style.display = 'none';
+                btn.textContent = '🎉 Subscribe Now!';
+                btn.disabled = false;
+            } else {
+                throw new Error('Server error');
+            }
+        } catch (err) {
+            alert('Oops! Something went wrong. Please call or email us directly — we\'d love to hear from you! 😊');
+            btn.textContent = '🎉 Subscribe Now!';
+            btn.disabled = false;
+        }
+    });
+
+    // ── SMOOTH SCROLL ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', function(e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
